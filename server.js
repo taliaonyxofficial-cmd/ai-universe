@@ -24,7 +24,7 @@ app.use(cors({
   origin: FRONTEND_ORIGIN === "*" ? true : FRONTEND_ORIGIN.split(",").map(s => s.trim()),
   methods: ["GET"]
 }));
-app.get("/", (_req, res) => res.status(200).send("AI Universe server is running."));
+app.get("/", (_req, res) => res.sendFile(path.join(__dirname, "index.html")));
 app.get("/health", (_req, res) => res.json({
   ok: true,
   clients: wss ? wss.clients.size : 0,
